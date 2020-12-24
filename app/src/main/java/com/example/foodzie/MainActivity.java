@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText cfpassword;
     Button register;
     ProgressBar progressBar;
-    private FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,13 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                                        if (!task.isSuccessful()) {
-                                            Toast.makeText(MainActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
 
                                         } else {
 
-                                            Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                            Toast.makeText(MainActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
